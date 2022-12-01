@@ -1,9 +1,16 @@
 let pageCount = questions.length;
 let currentPage = 0;
+let points = 0;
+
+const wrongAns = new Audio('src/sounds/wrong.mp3');
+const rightAns = new Audio('src/sounds/right.mp3');
+const endgame = new Audio('src/sounds/end.mp3');
 
 
 function renderContent() {
     content.innerHTML = '';
+    currentPage = 0;
+    points = 0;
     renderQuestions();
     disableBtn(true);
 
@@ -15,17 +22,58 @@ function renderQuestions() {
 
 }
 
+function renderEndScreen() {
+    content.innerHTML = '';
+    content.innerHTML = renderEndScreenTemp(points);
+}
+
 function checkAnswer(a) {
-    if (questions[currentPage].rightAnswer == a) {
-        colorAnswer();
-        disableBtn(false);
-    } else colorAnswer();
+    let rightAns = questions[currentPage].rightAnswer;
+
+    if (rightAns == a) {
+        playSound('right');
+        colorAnswer(a, true);
+        points++;
+    } else {
+        playSound('wrong');
+        colorAnswer(a, false);
+        colorAnswer(rightAns, true);
+    }
+    disableAns(true);
+    disableBtn(false);
+    checkForLastQuestion();
 }
 
-function colorAnswer() {
-    //TODO
+function checkForLastQuestion() {
+    if (currentPage === pageCount - 1) {
+        document.getElementById('nextBtn').innerHTML = "AUSWERTUNG";
+    }
 }
 
+function colorAnswer(a, boolean) {
+    if (boolean === true) {
+        let answer = document.getElementById(`ans${a}`);
+        answer.classList.add('true');
+    }
+    if (boolean === false) {
+        let answer = document.getElementById(`ans${a}`);
+        answer.classList.add('false');
+    }
+
+}
+
+function playSound(sound) {
+    if (sound === 'win') {
+        endgame.cloneNode(true).play();
+    }
+    if (sound === 'wrong') {
+        wrongAns.cloneNode(true).play();
+    }
+    if (sound === 'right') {
+        rightAns.play();
+    }
+
+}
 
 ////////////////////////////////////////////////////////////
 
@@ -34,6 +82,9 @@ function nextPage() {
         currentPage++;
         renderQuestions();
         disableBtn(true);
+    }
+    if (currentPage === pageCount - 1) {
+        renderEndScreen();
     }
 }
 
@@ -45,6 +96,12 @@ function lastPage() {
 }
 
 function disableBtn(boolean) {
-    console.log(boolean);
     document.getElementById('nextBtn').disabled = boolean;
+}
+
+function disableAns(boolean) {
+    for (let i = 0; i < 4; i++) {
+        document.getElementById(`ans${i+1}`).disabled = boolean;
+        document.getElementById(`ans${i+1}`).classList.add('noHover');
+    }
 }

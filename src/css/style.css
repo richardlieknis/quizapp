@@ -6,6 +6,10 @@ body {
     flex-direction: column;
 }
 
+.noHover {
+    pointer-events: none;
+}
+
 .maincontainer {
     height: 100vh;
     display: flex;
@@ -29,8 +33,7 @@ h1 {
 }
 
 .card-text {
-    gap: 0px !important;
-    color: #f00 !important;
+    width: 100%;
 }
 
 .card-body {
@@ -63,8 +66,10 @@ h1 {
 
 .answer {
     border: 1px solid #ddd;
+    background-color: #fdfdfd;
     border-radius: 6px;
     padding: 10px;
+    margin-bottom: 10px;
     font-weight: 500;
     display: flex;
     align-items: center;
