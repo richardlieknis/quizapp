@@ -1,4 +1,107 @@
 body {
-    background-color: blueviolet !important;
+    background-color: rgb(240, 240, 240) !important;
     min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.maincontainer {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    align-items: center;
+}
+
+h1 {
+    position: absolute;
+    padding-top: 30px;
+}
+
+.card {
+    display: flex !important;
+    flex-direction: row !important;
+    padding: unset !important;
+    position: relative;
+    width: 700px !important;
+    height: 700px !important;
+    padding: 20px;
+}
+
+.card-text {
+    gap: 0px !important;
+    color: #f00 !important;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.card-body img {
+    object-fit: scale-down;
+    max-width: 300px;
+    /* display: none; */
+}
+
+.card-side {
+    display: flex;
+    justify-content: center;
+    width: 150px;
+    border-right: 1px solid #ccc;
+    padding: 10px;
+    background: linear-gradient(#2370B8, #2370b8aa, #3795ee);
+    border-radius: 5px 0 0 5px;
+    box-shadow: 5px 0 3px #0001;
+}
+
+.card-side img {
+    object-fit: scale-down;
+}
+
+.answer {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 10px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.answer:hover {
+    background-color: #f8f8f8;
+    cursor: pointer;
+}
+
+.answerChar {
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-right: 20px;
+    background-color: white;
+}
+
+.navigation {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation .btn {
+    cursor: pointer;
+}
+
+
+/* WRONG ANSWER */
+
+.false {
+    background-color: rgb(230, 55, 55);
+}
+
+.true {
+    background-color: rgb(88, 216, 88);
 }
