@@ -8,6 +8,7 @@ const endgame = new Audio('src/sounds/end.mp3');
 
 
 function renderContent() {
+    document.querySelector('.endImg').classList.add('d-none');
     content.innerHTML = '';
     currentPage = 0;
     points = 0;
@@ -25,6 +26,7 @@ function renderQuestions() {
 function renderEndScreen() {
     content.innerHTML = '';
     content.innerHTML = renderEndScreenTemp(points);
+    document.querySelector('.endImg').classList.remove('d-none');
 }
 
 function checkAnswer(a) {
@@ -82,17 +84,12 @@ function nextPage() {
         currentPage++;
         renderQuestions();
         disableBtn(true);
+
     }
-    if (currentPage === pageCount - 1) {
+    if (document.getElementById('nextBtn').innerHTML == "AUSWERTUNG") {
         renderEndScreen();
     }
-}
 
-function lastPage() {
-    if (currentPage > 0 && currentPage < pageCount) {
-        currentPage--;
-        renderQuestions()
-    }
 }
 
 function disableBtn(boolean) {
