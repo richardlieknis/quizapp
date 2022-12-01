@@ -21,8 +21,8 @@ function renderQuestionsTemp(i) {
           </button>
       </p>
       <div class="navigation">
-          <div>Frage <b>${currentPage+1} von 7</b></div>
-          <button id="nextBtn" class="btn btn-primary" onclick="nextPage()">Nächste Frage</button>
+          <div>Question <b>${currentPage+1} of 7</b></div>
+          <button id="nextBtn" class="btn btn-primary" onclick="nextPage()">NEXT</button>
       </div>
   `;
 }
@@ -31,7 +31,7 @@ function renderEndScreenTemp(points) {
     return `
       <div class="endPage">
         <div>
-          <span><h5>${points} von ${questions.length} Punkten erreicht!</h5><span>
+          <span><h5>SCORE ${points}/${questions.length}</h5><span>
           <div><button class="restartBtn btn" onclick="renderContent()">RESTART</button></div>
         </div>  
       </div>

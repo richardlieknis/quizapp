@@ -27,6 +27,7 @@ function renderEndScreen() {
     content.innerHTML = '';
     content.innerHTML = renderEndScreenTemp(points);
     document.querySelector('.endImg').classList.remove('d-none');
+    playSound('win').play();
 }
 
 function checkAnswer(a) {
@@ -48,7 +49,7 @@ function checkAnswer(a) {
 
 function checkForLastQuestion() {
     if (currentPage === pageCount - 1) {
-        document.getElementById('nextBtn').innerHTML = "AUSWERTUNG";
+        document.getElementById('nextBtn').innerHTML = "FINISH";
     }
 }
 
@@ -86,7 +87,7 @@ function nextPage() {
         disableBtn(true);
 
     }
-    if (document.getElementById('nextBtn').innerHTML == "AUSWERTUNG") {
+    if (document.getElementById('nextBtn').innerHTML == "FINISH") {
         renderEndScreen();
     }
 
